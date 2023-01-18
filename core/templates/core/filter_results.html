@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}
+    search |
+{% endblock %}
+
+{% block content %}
+{% if properties %}
+    {% include 'core/property_list.html' %}
+{% else %}
+
+    <div class="text-center mx-auto mt-5 mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+        <h1 class="mb-3">SORRY</h1>
+        <p>No property listed with key word <h3>"{{ query }}"</h3></p>
+    </div>
+
+{% endif %}
+{% endblock %}

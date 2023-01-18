@@ -1,0 +1,112 @@
+
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ property.title }} |
+{% endblock %}
+
+
+
+{% block content %}
+
+
+     <!-- About Start -->
+     <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+              <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                <div class="about-img position-relative overflow-hidden p-5 pe-0">
+              
+                  <div class="animated fadeIn">
+                    <div class="owl-carousel header-carousel">
+                        {% for image in images %}
+                          <div class="owl-carousel-item">
+                              <img class="img-fluid w-100"  src="{{ image.images.url }}" alt="">
+                          </div>
+                        {% endfor %}
+                    </div>
+                  </div>
+                    
+                </div>
+              </div>
+
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <h1 class="mb-4">{{ property.title }}</h1>
+                    <p><i class="fa fa-ruler-combined  text-primary me-2"></i>{{ property.building_size_in_SQFT }} Sqft</p>
+                    <p><i class="fa fa-bath text-primary me-2"></i>{{ property.bathroom }} bath</p>
+                    <p><i class="fa fa-bed  text-primary me-2"></i>{{ property.bedroom }} bed</p>
+                    <p class="mb-4">{{ property.description }}</p>
+
+                   
+                    
+                        {% if user.is_authenticated %}
+                          {% if property.user == request.user %}
+                          <a class="btn btn-primary py-3 px-5 mt-3" href="{% url 'edit_property' property.id %}">Edit post</a>
+                          <a class="btn btn-primary py-3 px-5 mt-3" href="{% url 'delete_property'  property.id %}">Delete post</a>
+                          {% endif %}
+                        {% endif %}
+                       
+                 
+                </div> 
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+
+      <!-- Call to Action Start -->
+  <div class="container-xxl py-5">
+    <div class="container">
+        <div class="bg-light rounded p-3">
+            <div class="bg-white rounded p-4" style="border: 1px dashed rgba(0, 185, 142, .3)">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                        <img class="img-fluid rounded w-100" src="{% static 'core/img/call-to-action.jpg' %}" alt="">
+                    </div>
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                        <div class="mb-4">
+                            <h1 class="mb-3"><a href="{% url 'agent_profile' property.user.username %}">{% firstof property.user.get_full_name property.user.username %}</a></h1>
+                            <p>Eirmod sed ipsum dolor sit rebum magna erat. Tempor lorem kasd vero ipsum sit sit diam justo sed vero dolor duo.</p>
+                        </div>
+                        <a href="" class="btn btn-primary py-3 px-4 me-2"><i class="fa fa-phone-alt me-2"></i>Make A Call</a>
+                        <a href="https://wa.me/{% firstof property.user.phone_number %}?text={{Wmessage}}{{current_path}}" class="btn btn-dark py-3 px-4"><i class="fa fa-calendar-alt me-2"></i>Get Appoinment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+<!-- Call to Action End -->
+
+
+
+    {% endblock %}
+
+    <a class="btn btn-primary py-3 px-5 mt-3" href="{% url 'edit_property' property.id %}">Edit post</a>
+    <a class="btn btn-primary py-3 px-5 mt-3" href="{% url 'delete_property'  property.id %}">Delete post</a>
+
+<!-- Call to Action Start -->
+<div class="container-xxl py-5">
+  <div class="container">
+      <div class="bg-light rounded p-3">
+          <div class="bg-white rounded p-4" style="border: 1px dashed rgba(0, 185, 142, .3)">
+              <div class="row g-5 align-items-center">
+                  <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                      <img class="img-fluid rounded w-100" src="{% static 'core/img/call-to-action.jpg' %}" alt="">
+                  </div>
+                  <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                      <div class="mb-4">
+                          <h1 class="mb-3">{% firstof user.get_full_name user.username %}</h1>
+                          <p>Eirmod sed ipsum dolor sit rebum magna erat. Tempor lorem kasd vero ipsum sit sit diam justo sed vero dolor duo.</p>
+                      </div>
+                      <a href="" class="btn btn-primary py-3 px-4 me-2"><i class="fa fa-phone-alt me-2"></i>Make A Call</a>
+                      <a href="" class="btn btn-dark py-3 px-4"><i class="fa fa-calendar-alt me-2"></i>Get Appoinment</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Call to Action End -->

@@ -1,0 +1,58 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block title %}
+    login |
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="bg-light rounded p-3">
+            <div class="bg-white rounded p-4" style="border: 1px dashed rgba(0, 185, 142, .3)">
+                <div class="row g-5 align-items-center">
+                    {% include 'core/messages.html' %}
+                    
+                    <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                        <h1 class="">LOGIN</h1>
+                        
+                    </div>
+                        <!-- FORM START -->
+                    <form method="post" action={% url 'login' %}>
+                        {% csrf_token %}
+                            <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                                <input type="text" required name="username" class="form-control" placeholder="Username" value="{{ data.username }}" />
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                                <input type="password" required name="password" class="form-control" placeholder="Password" />
+                            </div>
+                            <div class="d-grid">
+                                <button class="btn btn-primary py-3 px-4 me-2">Login</button>
+                                <p class="text-center text-muted mt-2">Dont have an account <a href="{% url 'signup' %}">Click here to SignUp</a></p>
+                                <p class="text-center">
+                                    Forget password? <a href="#">Click here to reset</a>
+                                </p>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>           
+                                     
+        
+    
+{% endblock %}
+
+
+

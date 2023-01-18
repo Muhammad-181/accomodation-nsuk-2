@@ -1,0 +1,36 @@
+<form method="get">
+    {{ filter.form.as_p }}
+    <input type="submit" value="Filter">
+    
+    <input type="hidden" name="{{ filter }}" value="">
+    <input type="submit" value="Cancel filter">
+
+</form>
+
+
+<form method="get">
+    <label for="{{ filter.form.price_range.0.auto_id }}">Min price:</label>
+    {{ filter.form.price_range.0 }}
+    <label for="{{ filter.form.price_range.1.auto_id }}">Max price:</label>
+    {{ filter.form.price_range.1 }}
+    <input type="submit" value="Filter">
+  </form>
+
+
+  <form method="get">
+    <label for="{{ filter.form.price_range.auto_id }}">Price range:</label>
+    {{ filter.form.price_range }}
+
+    <label for="{{ filter.form.location.auto_id }}">Location:</label>
+    {{ filter.form.location }}
+    <label for="{{ filter.form.bedrooms.auto_id }}">Bedrooms:</label>
+    {{ filter.form.bedrooms }}
+    <label for="{{ filter.form.bathrooms.auto_id }}">Bathrooms:</label>
+    {{ filter.form.bathrooms }}
+    <input type="submit" value="Filter">
+    
+</form>
+
+
+<label for="{{ filter.form.location.auto_id }}">Location:</label>
+{{ filter.form.location }}

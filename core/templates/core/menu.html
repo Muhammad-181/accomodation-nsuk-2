@@ -1,0 +1,3 @@
+{% for instituition in instituitions %}
+    <a href="{% url 'instituition_detail-page' instituition.slug %}" class="dropdown-item">{{ instituition.slug }}</a>
+{% endfor %}

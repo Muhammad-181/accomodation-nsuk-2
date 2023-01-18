@@ -1,0 +1,9 @@
+create core app
+create storeapp
+create profiles app
+add app to settings
+install django filer & add to installed apps
+create abstract user, add to admin and migrate
+create instituition model & add to admin & migrate
+create views for home page
+creat images properties models add to view migrate
